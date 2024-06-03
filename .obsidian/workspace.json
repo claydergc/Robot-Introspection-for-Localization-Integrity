@@ -1,0 +1,224 @@
+{
+  "main": {
+    "id": "423973700be9bbdb",
+    "type": "split",
+    "children": [
+      {
+        "id": "a81d1cf89f145bdc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4a8512c2f63b8792",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Zettelkasten/Pose and reliability estimation using CNN.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d9693d27b116bdbc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Zettelkasten/Introspective Perception.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "fdd1b4e22b2e4844",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Zettelkasten/Bundle Adjustment.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6b052de187fe2844",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Zettelkasten/Protection Level (PL).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1f03f9317921904c",
+    "type": "split",
+    "children": [
+      {
+        "id": "a9a60cc54dd64fc8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "187270b3bca0bada",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6546857f40178c9c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9c6afef03154a5cc",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 430.5
+  },
+  "right": {
+    "id": "61fd082e4780cbb4",
+    "type": "split",
+    "children": [
+      {
+        "id": "eb6e271c8bafee8c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aa8e6a531bc60a89",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Zettelkasten/Pose and reliability estimation using CNN.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "def799c8bddf76ec",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Zettelkasten/Pose and reliability estimation using CNN.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f174efcff57e69be",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "10378da62d6fba7b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Zettelkasten/Pose and reliability estimation using CNN.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 325.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "4a8512c2f63b8792",
+  "lastOpenFiles": [
+    "Zettelkasten/Introspective Perception.md",
+    "Zettelkasten/Bundle Adjustment.md",
+    "Zettelkasten/Untitled.md",
+    "Zettelkasten/Pose and reliability estimation using CNN.md",
+    "Zettelkasten/Protection Level (PL).md",
+    "Zettelkasten/Reliable MCL.md",
+    "Zettelkasten/Applying integrity in robots.md",
+    "Zettelkasten/AMCL.md",
+    "Zettelkasten/Alert Limit  (AL).md",
+    "Zettelkasten/Aircrafts GPS Localization.md",
+    "Zettelkasten/Challenges of localization algorithms.md",
+    "Zettelkasten/Continuity.md",
+    "Zettelkasten/De-facto SLAM.md",
+    "Zettelkasten/Deep introspective SLAM by Naveed et al..md",
+    "Zettelkasten/Dependability.md",
+    "Zettelkasten/Dilution of Precision (DOP).md",
+    "Zettelkasten/Faults.md",
+    "Zettelkasten/Probabilistic SLAM.md",
+    "Zettelkasten/Global localization.md",
+    "Zettelkasten/Pose Tracking (local localization).md",
+    "Zettelkasten/Online Localization.md",
+    "Zettelkasten/Offline Localization.md",
+    "Zettelkasten/Introspection3.md",
+    "Zettelkasten/Introspection4.md",
+    "Zettelkasten/Introspection2.md",
+    "Zettelkasten/Introspection1.md",
+    "Files/Pasted image 20240315163608.png",
+    "Files/Pasted image 20240315163404.png",
+    "Files/Pasted image 20240308172046.png",
+    "Files/Pasted image 20240222173333.png",
+    "Files/Pasted image 20240222173326.png",
+    "Templates",
+    "Files",
+    "Reference Notes",
+    "Zettelkasten"
+  ]
+}

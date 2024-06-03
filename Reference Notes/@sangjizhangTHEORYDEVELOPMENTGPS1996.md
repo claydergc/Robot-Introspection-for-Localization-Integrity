@@ -1,0 +1,6 @@
+---
+title: THEORY AND DEVELOPMENT OF GPS INTEGRITY MONITORING SYSTEM
+authors:  Sang, Jizhang
+year: 1996
+---
+
