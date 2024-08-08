@@ -44,15 +44,11 @@ $\boldsymbol{z}_t^{\mathcal{F}_{\text{SF}}}:$ input images.
 $\boldsymbol{M}\,=\,\left\{\boldsymbol{p}_{k}^{W}|\boldsymbol{p}_{k}^{W}\in\mathbb{R}^{3},k{\in}[1,N]\right\}$, the map
 $\boldsymbol{T}^{\text{W}}$: pose of the camera
 
-$$\begin{equation}
-\boldsymbol{\hat{x}}_t^{\mathcal{F}_{\text{SB}}} =\ 
-\mathcal{F}_{\text{SB}}(\
-\boldsymbol{z}_t^{\mathcal{F}_{\text{SB}}}, \ 
-\boldsymbol{\hat{x}}_{1:t}^{\mathcal{F}_{\text{SF}}} \
-)
-\end{equation}$$
-$$\boldsymbol{\hat{x}}_t^{\mathcal{F}_{\text{SB}}}=\
-\hat{\boldsymbol{T}}^{\text{W}}_{1:t}, \boldsymbol{\hat{M}}$$
+$$ \boldsymbol{\hat{x}}_t^{\mathcal{F}_{\text{SB}}} = 
+\mathcal{F}_{\text{SB}}(
+\boldsymbol{z}_t^{\mathcal{F}_{\text{SB}}},  
+\boldsymbol{\hat{x}}_{1:t}^{\mathcal{F}_{\text{SF}}} ) $$
+$$\boldsymbol{\hat{x}}_t^{\mathcal{F}_{\text{SB}}}=\hat{\boldsymbol{T}}^{\text{W}}_{1:t}, \boldsymbol{\hat{M}}$$
 $\boldsymbol{z}_t^{\mathcal{F}_{\text{SB}}}=u_{1:t}$, history of odometry and IMU measurements
 
 ### Pose estimation with MLE
@@ -118,3 +114,33 @@ Introspective perception for GA-Net, a deep neural network for stereo depth esti
 - What if I want to use the history of odometry and IMU measurements?
 - From what I understand, this paper has described mathematically what any introspection method could do. Their description encompasses other introspection methods, for example Morgan's approach.
 - Why SOTA uncertainty estimation (Ensemble, MCDropout) methods were not used for ORB-SLAM? I could try.
+
+## Training of Introspective Perception
+
+We train the network using samples of the reprojection error collected in the deployment environments.
+
+First, using the following equation (29)
+
+$$\delta\mathbf{x}_{t,k}^{\mathcal{F}_{\mathrm{SF}}}={\hat{\mathbf{x}}}_{t,k}^{\mathcal{F}_{\mathrm{SF}}}-\Pi\big({\hat{\mathbf{T}}}_{t-\delta t}^{t}\Pi^{-1}\big({\hat{\mathbf{x}}}_{t-\delta t,k}^{\mathcal{F}_{\mathrm{SF}}^{t}},{\hat{d}}_{t-\delta t,k}^{t}\big)\big)$$
+
+they collect reprojection error samples $<\delta\boldsymbol{\hat{x}}_{t,k}^{\mathcal{F}_{\text{SF}}},\boldsymbol{\hat{x}}_{t,k}^{\mathcal{F}_{\text{SF}}}>$ across different images. The different $\hat{\boldsymbol{T}}^t_{t-\delta t}$ are transforms which have been verified to be valid with an accurate 3D lidar-based SLAM solution. Then, you obtain errors for all estimated features of ORB SLAM, according to the error calculated with LeGO-LOAM. They postprocess the set of computed sparse reprojection error values for every image (errors on features of each image) to interpolate the estimated reprojection error for every pixel on the image using a Gaussian Process (GP) regressor. The outputs of the GP regressor are represented as images Ict, which we refer to as cost-maps, ${\boldsymbol{I_c}}_{t}$. Finally, the DNN (encoder-decoder network) is trained with $\boldsymbol{I}_t,{\boldsymbol{I_c}}_{t}$
+
+It was trained with simulated and real world scenarios.
+
+The simulated scenario consisted on 60 km of AirSim with clear weather, wet roads, snow and leaves.
+
+The real world scenario consisted on data recorded by a mobile robot with more than 7 km indoor and outdoor of a college campus with different lighting conditions.
+
+Both data were separated in training and test sets.
+
+## Inference Part
+
+The introspection function estimates the re-projection error distribution of a measurement $z$, i.e. the image $I$ in the case of ORB-SLAM.
+
+The re-projection error $\delta\boldsymbol{\hat{x}}_{t,k}^{\mathcal{F}_{\text{SF}}}$ is used to feed a loss function:
+![[Pasted image 20240626150816.png]]
+
+which is then used to estimate the translation and rotation in the improved ORB-SLAM:
+
+$${\hat{\boldsymbol{T}}}_{1:t}^{w},{\hat{\boldsymbol{M}}}=\arg\operatorname*{min}_{\boldsymbol{T}_{1:t}^{w},\boldsymbol{M}}\sum_{t,k}{\mathcal{L}}\left(\epsilon_{t,k}^{T}{\scriptstyle\sum_{t,k}^{-1}}\epsilon_{t,k}\right)$$
+
