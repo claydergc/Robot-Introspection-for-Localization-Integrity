@@ -137,10 +137,11 @@ Both data were separated in training and test sets.
 
 The introspection function estimates the re-projection error distribution of a measurement $z$, i.e. the image $I$ in the case of ORB-SLAM.
 
-The re-projection error $\delta\boldsymbol{\hat{x}}_{t,k}^{\mathcal{F}_{\text{SF}}}$ is used to feed a loss function:
+The re-projection error $\delta\boldsymbol{\hat{x}}_{t,k}^{\mathcal{F}_{\text{SF}}}$ and $\theta(\boldsymbol{x}_{t,k}^{\mathcal{F}_{\mathrm{SF}}})$ is used to feed a loss function:
 ![[Pasted image 20240626150816.png]]
 
-which is then used to estimate the translation and rotation in the improved ORB-SLAM:
+, where $\theta(\boldsymbol{x}_{t,k}^{\mathcal{F}_{\mathrm{SF}}})$ is a real value from 0 to 1 that indicates when a feature is unreliable or reliable, respectively. Previous loss function is then used to estimate the translation and rotation in the improved ORB-SLAM:
 
 $${\hat{\boldsymbol{T}}}_{1:t}^{w},{\hat{\boldsymbol{M}}}=\arg\operatorname*{min}_{\boldsymbol{T}_{1:t}^{w},\boldsymbol{M}}\sum_{t,k}{\mathcal{L}}\left(\epsilon_{t,k}^{T}{\scriptstyle\sum_{t,k}^{-1}}\epsilon_{t,k}\right)$$
+**To sum up, unreliable features are not discarded but feature cost values are included in the estimation of the pose.
 
